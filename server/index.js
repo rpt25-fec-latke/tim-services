@@ -1,15 +1,15 @@
 const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
 const app = express();
+const bodyParser = require('body-parser');
+const port = 3002;
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors());
+
 app.use(express.static(__dirname + '/../client/dist'));
-
-app.use(bodyParser.json());
 app.get('/', (req, res) => {
-  res.send('Connected to server!')
-}); 
+  console.log("Connected to Server!");
+  res.end();
+});
 
-app.listen(3002, () => console.log('Service running on port 3002'));
+app.listen(port, () => {
+  console.log(`Listening on ${port}`);
+});
